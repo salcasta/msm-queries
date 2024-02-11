@@ -14,7 +14,6 @@ class DirectorsController < ApplicationController
   end
 
   def junior
-    require "date"
 
     matching_records = Director.all.order(:dob)
 
