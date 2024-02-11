@@ -12,4 +12,23 @@ class DirectorsController < ApplicationController
 
     render({ :template => "director_templates/details" })
   end
+
+  def junior
+    require "date"
+
+    matching_records = Director.all.order(:dob)
+
+    record = matching_records.at(-1)
+
+    @the_director = record.name
+
+    @id = record.id
+
+    @dob = record.dob
+
+    @format_date = @dob.strftime("%B %d, %Y")
+
+    render({ :template => "director_templates/youngest" })
+  end
+
 end
